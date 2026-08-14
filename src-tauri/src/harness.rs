@@ -80,8 +80,15 @@ pub fn spawn(port: u16) -> Result<Child, String> {
     let log = std::fs::File::create(project_root().join("dsh-gui-node.log"))
         .map_err(|e| e.to_string())?;
     let err_log = log.try_clone().map_err(|e| e.to_string())?;
-    Command::new(node_executable())
-        .arg(&bin)
+    let mut cmd = Command::new(node_executable());
+    #[cfg(windows)]
+    {
+        use std::os::windows::process::CommandExt;
+        // node.exe is a console-subsystem binary; spawned from a GUI app it
+        // would otherwise pop a fresh terminal window. Hide it.
+        cmd.creation_flags(0x0800_0000); // CREATE_NO_WINDOW
+    }
+    cmd.arg(&bin)
         .arg("web")
         .arg("--host")
         .arg("127.0.0.1")
