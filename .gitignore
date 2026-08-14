@@ -11,6 +11,10 @@ src-tauri/gen/
 # Generated files
 app-icon.png
 
+# Portable distribution output
+dist/
+dsh-gui-portable.zip
+
 # Runtime logs
 *.log
 

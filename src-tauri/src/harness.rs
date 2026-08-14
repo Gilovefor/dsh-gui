@@ -23,11 +23,23 @@ static CHILD_PID: AtomicU32 = AtomicU32::new(0);
 /// uses it to skip showing the error page for a deliberate shutdown.
 static INTENTIONAL_KILL: AtomicBool = AtomicBool::new(false);
 
-/// Project root = parent of `src-tauri` (the repo checkout).
-pub fn project_root() -> &'static Path {
+/// Project root. Prefers the directory containing the running executable when
+/// it sits directly next to `node_modules/` — the portable, zipped
+/// distribution layout (`dsh-gui.exe` + `node_modules/` + `node-runtime/`
+/// extracted anywhere). Otherwise falls back to the repo root (parent of
+/// `src-tauri`, the dev/build-tree layout).
+pub fn project_root() -> PathBuf {
+    if let Ok(exe) = std::env::current_exe() {
+        if let Some(dir) = exe.parent() {
+            if dir.join("node_modules").is_dir() {
+                return dir.to_path_buf();
+            }
+        }
+    }
     Path::new(env!("CARGO_MANIFEST_DIR"))
         .parent()
         .expect("src-tauri has a parent directory")
+        .to_path_buf()
 }
 
 /// Resolve the dsh CLI entry. `DSH_CMD` env var wins; otherwise the

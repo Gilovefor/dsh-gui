@@ -41,6 +41,16 @@ npm run bundle  # 可选：额外产出 NSIS/MSI 安装包
 - WebView2 的存储与系统 Edge 隔离：首次在窗口内登录 / 信任属于预期行为。
 - 环境变量 `DSH_CMD` 可覆盖 dsh CLI 入口（默认 `node_modules/@deepseek-ai/dsh/lib/bin.js`），便于测试其他版本。
 
+## 打包分发
+
+`npm run build` 后，把以下三样放进同一个文件夹（如 `dist/`），压缩即可发送；对方解压到**任意路径**双击 `dsh-gui.exe` 就能跑（exe 会优先使用自己旁边的 `node_modules/` 和 `node-runtime/`，即便携布局）：
+
+- `src-tauri/target/release/dsh-gui.exe`
+- `node_modules/`
+- `node-runtime/`
+
+体积约 440MB（zip 约 120MB）；node_modules 含完整 harness 依赖，无法进一步精简。若对方机器是全新的，首次运行会在其用户目录自动创建 `~/.dsh`（需要联网初始化）。
+
 ## 常见问题
 
 - **窗口里报 "Failed to load plugins / web boot: 34 entries did not activate"** → 基本是 node 版本低于 22.19。放一个 ≥22.19 的便携 node 到 `node-runtime/`，或升级系统 node。
