@@ -1,0 +1,22 @@
+[package]
+name = "dsh-gui"
+version = "0.1.0"
+description = "Desktop wrapper for the DeepSeek Harness (dsh) local web UI"
+edition = "2021"
+
+[lib]
+name = "dsh_gui_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["webview-data-url"] }
+open = "5"
+url = "2"
+percent-encoding = "2"
+
+[profile.release]
+lto = true
+strip = true

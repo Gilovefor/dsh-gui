@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>DeepSeek Harness</title>
+  <style>
+    :root { color-scheme: dark; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      background: #0f1115;
+      color: #e6e9f0;
+      font-family: system-ui, "Segoe UI", sans-serif;
+    }
+    .spinner {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 3px solid #2a2f3a;
+      border-top-color: #4d6bfe;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    p { margin: 0; font-size: 14px; color: #9aa3b2; }
+  </style>
+</head>
+<body>
+  <div class="spinner"></div>
+  <p>Starting DeepSeek Harness…</p>
+</body>
+</html>

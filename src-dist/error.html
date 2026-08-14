@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>DeepSeek Harness — 启动失败</title>
+  <style>
+    :root { color-scheme: dark; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: #0f1115;
+      color: #e6e9f0;
+      font-family: system-ui, "Segoe UI", sans-serif;
+      text-align: center;
+      padding: 24px;
+    }
+    h1 { font-size: 22px; margin: 0; color: #ff6b6b; }
+    p { margin: 0; font-size: 14px; color: #9aa3b2; max-width: 560px; line-height: 1.6; }
+    code { background: #1a1f2a; padding: 2px 6px; border-radius: 4px; color: #c7d2e4; }
+  </style>
+</head>
+<body>
+  <h1>无法启动 DeepSeek Harness 后端</h1>
+  <p>
+    请确认 <code>node</code> 已安装且在 PATH 中，然后重新启动本应用。
+    详情见应用目录下的 <code>dsh-gui-node.log</code>。
+    也可以通过环境变量 <code>DSH_CMD</code> 指定自定义的 dsh CLI 入口。
+  </p>
+</body>
+</html>

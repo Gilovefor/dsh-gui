@@ -1,0 +1,21 @@
+{
+  "name": "dsh-gui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktop wrapper for the DeepSeek Harness (dsh) local web UI",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build --no-bundle",
+    "bundle": "tauri build",
+    "icon": "tauri icon"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.1.0-rc.6"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2"
+  }
+}

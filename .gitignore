@@ -1,0 +1,18 @@
+# Node
+node_modules/
+
+# Bundled portable Node runtime (download via setup, not committed)
+node-runtime/
+
+# Rust / Tauri build output
+src-tauri/target/
+src-tauri/gen/
+
+# Generated files
+app-icon.png
+
+# Runtime logs
+*.log
+
+# Python venv (unrelated to this project, do not commit)
+.venv/
