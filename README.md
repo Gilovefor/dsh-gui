@@ -15,8 +15,7 @@
 ```bash
 rustup default stable        # 首次
 npm install                  # 安装 @tauri-apps/cli 和 @deepseek-ai/dsh
-node scripts/gen-icon.mjs    # 生成占位图标 app-icon.png（一次性）
-npm run icon -- app-icon.png # 生成 src-tauri/icons/ 全套（一次性）
+npm run icon -- app-icon.svg # 从 DeepSeek 鲸鱼 SVG 生成 src-tauri/icons/ 全套（一次性）
 ```
 
 ## 开发 / 构建
